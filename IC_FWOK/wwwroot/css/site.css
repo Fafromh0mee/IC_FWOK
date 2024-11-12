@@ -1,0 +1,71 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn-primary,
+.btn-dark {
+    background-color: #6A1AB7;
+    border-color: #6A1AB7;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-dark:hover,
+    .btn-dark:focus,
+    .btn-dark:active {
+        background-color: #5a0fa1;
+        border-color: #5a0fa1;
+    }
+
+.btn-outline-dark {
+    color: #6A1AB7;
+    border-color: #6A1AB7;
+}
+
+    .btn-outline-dark:hover,
+    .btn-outline-dark:focus,
+    .btn-outline-dark:active {
+        background-color: #6A1AB7;
+        color: white;
+        border-color: #6A1AB7;
+    }
+
+.btn-get-started {
+    border-radius: 70px;
+    margin-top: 20px;
+    background-color: #6A1AB7;
+    border-color: #6A1AB7;
+}
+
+    .btn-get-started:hover,
+    .btn-get-started:focus,
+    .btn-get-started:active {
+        background-color: #5a0fa1;
+        border-color: #5a0fa1;
+    }
+
+
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #FBFAF5;
+    font-family: 'Poppins', sans-serif; /* Ensure the font is applied */
+}
+
+
+/* Apply the font to other elements as needed */
+h1, h2, h3, h4, h5, h6, p, a, div {
+    font-family: 'Poppins', sans-serif;
+}

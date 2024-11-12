@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IC_FWOK.Controllers.Email>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Inbox</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Date & Time</th>
+            <th>Sender</th>
+            <th>Subject</th>
+            <th>Preview</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var email in Model)
+        {
+            <tr onclick="window.location.href='@Url.Action("ViewEmail", new { id = email.Id })'">
+                <td>@email.DateTime</td>
+                <td>@email.Sender</td>
+                <td>@email.Subject</td>
+                <td>@email.Preview</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .table-hover tbody tr {
+        cursor: pointer;
+    }
+</style>

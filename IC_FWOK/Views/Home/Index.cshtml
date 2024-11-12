@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px 0;
+    }
+
+    .hero-text {
+        max-width: 50%;
+        margin-right: 30px; /* Add margin to the right of the text */
+    }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="container hero">
+    <div class="hero-text">
+        <h1>Secure Communication, Smarter Collaboration</h1>
+        <p>Secure, fast, and efficient internal communication platform designed exclusively for Bangkok University's faculty, staff, and departments.</p>
+        <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-get-started">Get Started</a>
+    </div>
+    <div class="hero-image">
+        <img src="~/Images/HeroP.png" alt="Hero Image" />
+    </div>
+</div>

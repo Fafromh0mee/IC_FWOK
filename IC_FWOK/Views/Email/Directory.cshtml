@@ -1,0 +1,26 @@
+﻿@model List<IC_FWOK.Controllers.Directory>
+
+@{
+    ViewData["Title"] = "Directory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Directory</h2>
+
+@foreach (var directory in Model)
+{
+    <div>
+        <h3>@directory.Name</h3>
+        <form asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="directoryId" value="@directory.Id" />
+            <input type="file" name="file" />
+            <button type="submit">Upload</button>
+        </form>
+        <ul>
+            @foreach (var file in directory.Files)
+            {
+                <li>@file.Name</li>
+            }
+        </ul>
+    </div>
+}

@@ -1,0 +1,70 @@
+﻿@model IC_FWOK.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .register-header {
+        text-align: center;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .register-container {
+        background-color: white;
+        border-radius: 50px;
+        padding: 50px;
+        margin: 50px auto;
+        max-width: 600px;
+    }
+
+    .register-button {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="register-container">
+    <h2 class="register-header">Register</h2>
+
+    <form asp-action="Register" method="post">
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register" class="btn btn-primary register-button" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Login">Already have an account? Login here</a>
+    </div>
+</div>
+

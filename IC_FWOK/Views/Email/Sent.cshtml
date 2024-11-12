@@ -1,0 +1,57 @@
+﻿@model List<IC_FWOK.Controllers.Email>
+
+@{
+    ViewData["Title"] = "Sent Emails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Sent Emails</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Recipient</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var email in Model)
+        {
+            <tr>
+                <td>@email.Subject</td>
+                <td>@email.Recipient</td>
+                <td>@email.DateTime</td>
+                <td>
+                    <a href="/Email/ViewEmail/@email.Id" class="btn btn-primary">View</a>
+                    <button class="btn btn-danger" onclick="confirmDelete(@email.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="deleteSuccessMessage" class="alert alert-success" style="display:none;">
+    Email deleted successfully.
+</div>
+
+<script>
+    function confirmDelete(id) {
+        if (confirm("Are you sure you want to delete this email?")) {
+            $.ajax({
+                url: '/Email/Delete',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response.success) {
+                        $('#deleteSuccessMessage').show();
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                }
+            });
+        }
+    }
+</script>

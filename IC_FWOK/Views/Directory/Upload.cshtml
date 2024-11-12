@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Upload File";
+}
+
+<h2>Upload File</h2>
+
+<form asp-controller="Directory" asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Choose file to upload</label>
+        <input type="file" class="form-control" id="file" name="file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<style>
+    .dropbox {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="dropbox" id="dropbox">
+    Drag and drop a file here
+</div>
+
+<script>
+    var dropbox = document.getElementById('dropbox');
+    var fileInput = document.getElementById('file');
+
+    dropbox.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        dropbox.style.borderColor = 'blue';
+    });
+
+    dropbox.addEventListener('dragleave', function (e) {
+        e.preventDefault();
+        dropbox.style.borderColor = '#ccc';
+    });
+
+    dropbox.addEventListener('drop', function (e) {
+        e.preventDefault();
+        dropbox.style.borderColor = '#ccc';
+        fileInput.files = e.dataTransfer.files;
+    });
+</script>
