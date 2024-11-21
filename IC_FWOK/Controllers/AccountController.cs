@@ -33,7 +33,7 @@ namespace IC_FWOK.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.SingleOrDefault(u => u.Username == model.Username && u.Password == model.Password);
+                var user = _context.Users.SingleOrDefault(u => u.UserName == model.Username && u.PasswordHash == model.Password);
                 if (user != null)
                 {
                     // Handle successful login
@@ -60,10 +60,10 @@ namespace IC_FWOK.Controllers
                 var user = new User
                 {
                     Email = model.Email,
-                    Password = model.Password,
+                    PasswordHash = model.Password,
                     FullName = model.FullName,
                     PhoneNumber = model.PhoneNumber,
-                    Username = model.Username
+                    UserName = model.Username // Fix for CS9035: Required member 'User.UserName' must be set in the object initializer or attribute constructor.
                 };
 
                 _context.Users.Add(user);
