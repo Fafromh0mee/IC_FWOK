@@ -1,48 +1,42 @@
-﻿using IC_FWOK.Data;
-using IC_FWOK.Models;
+﻿using IC_FWOK.Models;
+using IC_FWOK.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IC_FWOK.Controllers
 {
-    public class UserController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UserController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly UserService _userService;
 
-        public UserController(ApplicationDbContext context)
+        public UserController(UserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
-        // GET: User/Login
-        public IActionResult Login()
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(User user)
         {
-            return View();
-        }
-
-        // POST: User/Login
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            if (ModelState.IsValid)
+            var result = await _userService.RegisterUser(user);
+            if (!result)
             {
-                var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Username == model.Username && u.Password == model.Password);
-
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Invalid login attempt. Please check your username and password.");
-                    return View(model);
-                }
-
-                // Set user session or authentication here
-                // For simplicity, we are just redirecting to a home page
-                return RedirectToAction("Index", "Home");
+                return BadRequest("User already exists.");
             }
-            return View(model);
+            return Ok("User registered successfully.");
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(string username, string password)
+        {
+            var user = await _userService.LoginUser(username, password);
+            if (user == null)
+            {
+                return Unauthorized("Invalid username or password.");
+            }
+            return Ok("Login successful.");
         }
     }
 }
+

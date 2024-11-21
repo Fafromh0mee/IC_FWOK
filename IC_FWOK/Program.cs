@@ -1,24 +1,16 @@
 using IC_FWOK.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using IC_FWOK.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
-// Register the DbContext with the connection string and enable retry on failure
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()));
+    options.UseSqlServer(connectionString));
+builder.Services.AddScoped<UserService>();
 
-// Add authentication services
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Account/Login";
-        options.LogoutPath = "/Account/Logout";
-    });
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -34,24 +26,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "user",
-    pattern: "{controller=User}/{action=Register}/{id?}");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "directory",
-    pattern: "{controller=Directory}/{action=Upload}/{id?}");
-
-app.Run();
+app.MapControllers();
 
 app.Run();
