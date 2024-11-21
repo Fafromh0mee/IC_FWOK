@@ -1,10 +1,9 @@
-public class Directory
+namespace IC_FWOK.Models
 {
-    public string Name { get; set; }
-    public List<File> Files { get; set; } = new List<File>();
-
-    public void AddFile(File file)
+    public class Directory
     {
-        Files.Add(file);
+        public string Name { get; set; }
+        public List<FileInfo> Files { get; set; }
+        public void AddFile(FileInfo file) { /* implementation */ }
     }
 }

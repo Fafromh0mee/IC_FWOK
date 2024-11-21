@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.IO;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace IC_FWOK.Controllers
@@ -18,7 +18,7 @@ namespace IC_FWOK.Controllers
         {
             if (file != null && file.Length > 0)
             {
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+                var filePath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
