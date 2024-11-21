@@ -16,7 +16,7 @@ namespace IC_FWOK.Services
 
         public async Task<bool> RegisterUser(User user)
         {
-            if (await _context.Users.AnyAsync(u => u.Username == user.Username || u.Email == user.Email))
+            if (await _context.Users.AnyAsync(u => u.UserName == user.UserName || u.Email == user.Email))
             {
                 return false; // User already exists
             }
@@ -28,7 +28,8 @@ namespace IC_FWOK.Services
 
         public async Task<User> LoginUser(string username, string password)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+            // Assuming PasswordHash is used for storing hashed passwords
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username && u.PasswordHash == password);
         }
     }
 }
