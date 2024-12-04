@@ -20,7 +20,12 @@
         @foreach (var email in Model)
         {
             <tr>
-                <td>@email.Subject</td>
+                <!-- Make the subject clickable -->
+                <td>
+                    <a href="/Email/ViewEmail/@email.Id" class="text-decoration-none">
+                        @email.Subject
+                    </a>
+                </td>
                 <td>@email.Recipient</td>
                 <td>@email.DateTime</td>
                 <td>

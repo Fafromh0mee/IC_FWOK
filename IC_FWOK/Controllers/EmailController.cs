@@ -13,7 +13,6 @@ namespace IC_FWOK.Controllers
         {
             new Email { Id = 1, DateTime = DateTime.Now, Sender = "John Doe", Subject = "Meeting Reminder", Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
             new Email { Id = 2, DateTime = DateTime.Now.AddMinutes(-30), Sender = "Jane Smith", Subject = "Project Update", Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
-            // Add more sample emails as needed
         };
 
         private static List<Directory> directories = new List<Directory>();
@@ -31,7 +30,10 @@ namespace IC_FWOK.Controllers
             var sentEmails = GetSentEmails(); // Assuming you have a method to get sent emails
             return View(sentEmails);
         }
-
+        public IActionResult Settings()
+        {
+            return View();
+        }
         private List<Email> GetSentEmails()
         {
             // Implement logic to retrieve sent emails

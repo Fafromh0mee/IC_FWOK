@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,35 +24,37 @@
             border-top-right-radius: 40px;
         }
 
-            .vertical-nav .nav-link {
-                font-weight: bold;
-                color: #fff;
-                font-size: 1.1em;
-                margin-bottom: 5px; /* Add space between nav-items */
-                margin-top: 5px;
-                border-bottom: 0.3px solid #fff; /* Make the line thinner */
-            }
+        .vertical-nav .nav-link {
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            /* Add space between nav-items */
+            margin-top: 5px;
+            border-bottom: 0.3px solid #fff;
+            /* Make the line thinner */
+        }
 
-                .vertical-nav .nav-link:hover {
-                    background-color: #5a0fa7;
-                }
+        .vertical-nav .nav-link:hover {
+            background-color: #5a0fa7;
+        }
 
-            .vertical-nav .compose-link {
-                background-color: #976ED7;
-                border-radius: 20px;
-                padding: 10px 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+        .vertical-nav .compose-link {
+            background-color: #976ED7;
+            border-radius: 20px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-                .vertical-nav .compose-link:hover {
-                    background-color: #BE95FF;
-                }
+        .vertical-nav .compose-link:hover {
+            background-color: #BE95FF;
+        }
 
-                .vertical-nav .compose-link i {
-                    margin-right: 5px;
-                }
+        .vertical-nav .compose-link i {
+            margin-right: 5px;
+        }
 
         .main-content {
             margin-left: 270px;
@@ -62,18 +65,18 @@
             margin-bottom: 20px;
         }
 
-            .user-info img {
-                border-radius: 50%;
-                width: 60px;
-                height: 60px;
-            }
+        .user-info img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
 
-            .user-info .user-name {
-                font-size: 1.2em;
-                font-weight: bold;
-                color: #fff;
-                margin-top: 5px;
-            }
+        .user-info .user-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 5px;
+        }
 
         .nav-bottom {
             margin-top: auto;
@@ -90,12 +93,14 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white d-md-none">
         <a class="navbar-brand" href="#">
             <img src="~/Images/Logo.png" alt="Logo" style="height: 60px;" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -142,10 +147,7 @@
                     <a class="nav-link" asp-area="" asp-controller="Email" asp-action="Sent">Sent</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Email" asp-action="Directory">Directory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Directory" asp-action="Upload">Upload File</a>
+                    <a class="nav-link" asp-controller="Directory" asp-action="Upload">Directory</a>
                 </li>
 
             </ul>
@@ -153,19 +155,14 @@
         <div class="nav-bottom">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Settings">Settings</a>
+                    <a class="nav-link" asp-area="" asp-controller="Email" asp-action="Settings">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
-                        <a class="nav-link" href="#" id="logoutButton">Logout</a>
+                    <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post"
+                        style="display: inline;">
+                        <a class="nav-link" asp-action="Index" id="logoutButton">Logout</a>
                     </form>
                 </li>
-
-
-
-
-
-
             </ul>
         </div>
     </div>
@@ -185,9 +182,10 @@
 
 
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted footer-custom">
         <div class="container">
-            &copy; 2024 - InterCenter Mail by FWOK - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - InterCenter Mail by FWOK - <a asp-area="" asp-controller="Home"
+                asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -197,4 +195,5 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
